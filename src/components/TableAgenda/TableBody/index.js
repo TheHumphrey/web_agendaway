@@ -1,4 +1,5 @@
 import React from "react";
+import useDate from "../../../hooks/useDate";
 
 import { BodyStyle } from "./style";
 
@@ -20,7 +21,7 @@ const Body = ({ data }) => {
   return (
     <BodyStyle>
       <td>{data.name}</td>
-      <td>{data.data}</td>
+      <td>{useDate(data.data)}</td>
       <td>
         <span id="weekDay" className={handleToday()}>
           {handleToday()}

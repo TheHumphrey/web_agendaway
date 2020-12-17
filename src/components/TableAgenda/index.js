@@ -18,7 +18,7 @@ const TableAgenda = () => {
           id: doc.id,
           ...doc.data(),
         }));
-        console.log(listaReuniao);
+
         setAgendamentos(listaReuniao);
       });
   }, []);
@@ -28,7 +28,7 @@ const TableAgenda = () => {
       <thead>
         <tr style={{ textAlign: "center", color: "white" }}>
           <th>Nome</th>
-          <th>Data</th>
+          <th>Date</th>
           <th>Dia da Semana</th>
           <th>Horário Inicio</th>
           <th>Horário Fim</th>
