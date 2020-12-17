@@ -1,6 +1,6 @@
 import Layout from "./Layout";
 import Navbar from "./Navbar";
 import TableAgenda from "./TableAgenda";
-import Agendamento from "./Agendamento";
+import NewAgendamento from "./NewAgendamento";
 
-export { Layout, TableAgenda, Navbar, Agendamento };
+export { Layout, TableAgenda, Navbar, NewAgendamento };
