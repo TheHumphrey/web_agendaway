@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import firebase from "firebase";
 
 import { FormControl, Button } from "react-bootstrap";
 
@@ -10,14 +11,28 @@ const Agendamento = () => {
   const [timeStart, setTimeStart] = useState();
   const [timeEnd, setTimeEnd] = useState();
   const [isOk, setIsOk] = useState(false);
+  const db = firebase.firestore();
 
   useEffect(() => {
     console.log(data);
   }, [data]);
 
+  const cadastrar = () => {
+    db.collection("agendamento")
+      .add({
+        name,
+        data,
+        start: timeStart,
+        finish: timeEnd,
+      })
+      .then(() => {})
+      .catch((erro) => {});
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (name && data && timeStart && timeEnd) {
+      cadastrar();
     } else {
       setIsOk(true);
     }

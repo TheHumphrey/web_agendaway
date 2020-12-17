@@ -1,33 +1,32 @@
 import React, { useState, useEffect } from "react";
 
-
 import { Table } from "react-bootstrap";
 
 import Body from "./TableBody";
 
-import firebase from '../../configs/firebase';
+import firebase from "../../configs/firebase";
 
 const TableAgenda = () => {
-
-  const [agendamento, setAgendamentos] = useState([]);
-  let listaReuniao = [];
+  const [agendamentos, setAgendamentos] = useState([]);
 
   useEffect(() => {
-    firebase.firestore().collection('agendamento').get().then(async (resultado) => {
-      await resultado.docs.forEach(doc => {
-        listaReuniao.push({
+    firebase
+      .firestore()
+      .collection("agendamento")
+      .onSnapshot((resultado) => {
+        let listaReuniao = resultado.docs.map((doc) => ({
           id: doc.id,
-          ...doc.data()
-        })
-      })
-      setAgendamentos(listaReuniao);
-    })
+          ...doc.data(),
+        }));
+        console.log(listaReuniao);
+        setAgendamentos(listaReuniao);
+      });
   }, []);
 
   return (
     <Table>
       <thead>
-        <tr style={{ textAlign: "center" }}>
+        <tr style={{ textAlign: "center", color: "white" }}>
           <th>Nome</th>
           <th>Data</th>
           <th>Dia da Semana</th>
@@ -36,7 +35,7 @@ const TableAgenda = () => {
         </tr>
       </thead>
       <tbody>
-        {agendamento.map((item, index) => (
+        {agendamentos.map((item, index) => (
           <Body data={item} key={index} />
         ))}
       </tbody>
