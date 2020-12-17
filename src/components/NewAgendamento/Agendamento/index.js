@@ -23,12 +23,14 @@ const Agendamento = () => {
       <FormControl
         aria-label="Default"
         aria-describedby="inputGroup-sizing-default"
+        className="input"
         onChange={(e) => setName(e.target.value)}
         placeholder="Nome"
       />
       <FormControl
         aria-label="Default"
         aria-describedby="inputGroup-sizing-default"
+        className="input"
         type="date"
         onChange={(e) => setData(e.target.value)}
         placeholder="Data"
@@ -36,6 +38,7 @@ const Agendamento = () => {
       <FormControl
         aria-label="Default"
         aria-describedby="inputGroup-sizing-default"
+        className="input"
         type="time"
         onChange={(e) => setTimeStart(e.target.value)}
         placeholder="Inicio da reunião"
@@ -43,6 +46,7 @@ const Agendamento = () => {
       <FormControl
         aria-label="Default"
         aria-describedby="inputGroup-sizing-default"
+        className="input"
         type="time"
         onChange={(e) => setTimeEnd(e.target.value)}
         placeholder="Fim da reunião"
