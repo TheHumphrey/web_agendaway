@@ -1,28 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
+import { useSelector, useDispatch } from "react-redux";
 
 import { Table } from "react-bootstrap";
 
 import Body from "./TableBody";
 
-import firebase from '../../configs/firebase';
-
 const TableAgenda = () => {
-
-  const [agendamento, setAgendamentos] = useState([]);
-  let listaReuniao = [];
-
-  useEffect(() => {
-    firebase.firestore().collection('agendamento').get().then(async (resultado) => {
-      await resultado.docs.forEach(doc => {
-        listaReuniao.push({
-          id: doc.id,
-          ...doc.data()
-        })
-      })
-      setAgendamentos(listaReuniao);
-    })
-  }, []);
+  const [data, setData] = useState([
+    {
+      name: "Fernando barros de lima",
+      data: "18/12/2020",
+      weekDay: "Quarta",
+      start: "10:00",
+      finish: "12:00",
+    },
+  ]);
 
   return (
     <Table>
@@ -36,7 +29,7 @@ const TableAgenda = () => {
         </tr>
       </thead>
       <tbody>
-        {agendamento.map((item, index) => (
+        {data.map((item, index) => (
           <Body data={item} key={index} />
         ))}
       </tbody>
