@@ -9,6 +9,7 @@ const Agendamento = () => {
   const [data, setData] = useState();
   const [timeStart, setTimeStart] = useState();
   const [timeEnd, setTimeEnd] = useState();
+  const [isOk, setIsOk] = useState(false);
 
   useEffect(() => {
     console.log(data);
@@ -16,19 +17,28 @@ const Agendamento = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(name, data, timeStart, timeEnd);
+    if (name && data && timeStart && timeEnd) {
+    } else {
+      setIsOk(true);
+    }
   };
   return (
     <Container>
+      <h5 style={{ color: "white" }}>Adicionar</h5>
+      {isOk ? (
+        <span style={{ color: "red", fontWeight: "600" }}>Falha</span>
+      ) : null}
       <FormControl
         aria-label="Default"
         aria-describedby="inputGroup-sizing-default"
+        className="input"
         onChange={(e) => setName(e.target.value)}
         placeholder="Nome"
       />
       <FormControl
         aria-label="Default"
         aria-describedby="inputGroup-sizing-default"
+        className="input"
         type="date"
         onChange={(e) => setData(e.target.value)}
         placeholder="Data"
@@ -36,6 +46,7 @@ const Agendamento = () => {
       <FormControl
         aria-label="Default"
         aria-describedby="inputGroup-sizing-default"
+        className="input"
         type="time"
         onChange={(e) => setTimeStart(e.target.value)}
         placeholder="Inicio da reunião"
@@ -43,10 +54,12 @@ const Agendamento = () => {
       <FormControl
         aria-label="Default"
         aria-describedby="inputGroup-sizing-default"
+        className="input"
         type="time"
         onChange={(e) => setTimeEnd(e.target.value)}
         placeholder="Fim da reunião"
       />
+
       <Button variant="primary" type="submit" onClick={(e) => handleSubmit(e)}>
         Submit
       </Button>

@@ -4,7 +4,7 @@ import { Col, Container, Row } from "react-bootstrap";
 
 const Layout = ({ children }) => {
   return (
-    <Container fluid>
+    <Container fluid style={{ backgroundColor: "#024C95" }}>
       <Row>
         <Col
           style={{
