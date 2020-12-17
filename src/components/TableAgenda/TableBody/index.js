@@ -7,7 +7,11 @@ const Body = ({ data }) => {
     <BodyStyle>
       <td>{data.name}</td>
       <td>{data.data}</td>
-      <td>{data.weekDay}</td>
+      <td>
+        <span id="weekDay" className={data.weekDay}>
+          {data.weekDay}
+        </span>
+      </td>
       <td>{data.start}</td>
       <td>{data.finish}</td>
     </BodyStyle>
